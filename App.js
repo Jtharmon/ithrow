@@ -1,19 +1,18 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, View, Text } from 'react-native';
+import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 
-const App = () => {
+export default function App() {
   return (
     <ImageBackground
-      source={require('../ithrow')} // Replace with the actual path to your image file
+      source={require('./img/startpage.jpg')} // Provide the correct path to your image
       style={styles.background}
     >
       <View style={styles.container}>
-        <Text style={styles.text}>Your App Content Goes Here</Text>
+        <Text style={styles.text}>IThrow</Text>
       </View>
     </ImageBackground>
   );
-};
-
+}
 
 const styles = StyleSheet.create({
   background: {
@@ -27,9 +26,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    color: 'white',
-    fontSize: 24,
+    color: 'black',
+    fontSize: 48,
   },
-});
-
-export default App;
+})
