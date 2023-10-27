@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "ithrow",
+    "slug": "ithrow",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
