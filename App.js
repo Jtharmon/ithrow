@@ -1,9 +1,29 @@
 import React from 'react';
 import { ImageBackground, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { createStackNavigator } from 'react-navigation-stack';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
+
+// Import your components (uncomment and provide correct import paths)
+import Profile from './profile';
+import Discs from './discs';
+import Events from './events';
+import StartARound from './start-a-round';
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="Discs" component={Discs} />
+        <Stack.Screen name="Events" component={Events} />
+        <Stack.Screen name="StartARound" component={StartARound} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
 
 const HomeScreen = ({ navigation }) => {
   return (
@@ -42,7 +62,7 @@ const HomeScreen = ({ navigation }) => {
       </View>
     </ImageBackground>
   );
-};
+}
 
 const styles = StyleSheet.create({
   background: {
@@ -74,15 +94,3 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
-
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Profile" component={Profile} />
-        {/* Add more Stack.Screen components for Discs, Events, and StartARound */}
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
