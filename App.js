@@ -1,7 +1,7 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { ImageBackground, StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
 
-export default function App() {
+export default function App({ navigation }) {
   return (
     <ImageBackground
       source={require('./img/startpage.jpg')} // Provide the correct path to your image
@@ -10,7 +10,8 @@ export default function App() {
       <View style={styles.container}>
         <Text style={styles.text}>IThrow</Text>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} 
+          onPress={() => navigation.navigate('profile.js')}>
             <Text style={styles.buttonText}>Profile</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button}>
