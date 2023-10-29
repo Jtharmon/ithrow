@@ -1,14 +1,40 @@
-// Profile.js
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
-const Profile = () => {
+function ProfileScreen() {
   return (
-    <View>
-      <Text>This is the Profile Page</Text>
-      {/* Add your profile content here */}
+    <View style={styles.container}>
+      <Text style={styles.heading}>User Profile</Text>
+      <Text style={styles.username}>Username: JohnDoe123</Text>
+      <Text style={styles.email}>Email: john.doe@example.com</Text>
+      <Text style={styles.bio}>Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
     </View>
   );
-};
+}
 
-export default Profile;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  heading: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  username: {
+    fontSize: 18,
+    marginTop: 10,
+  },
+  email: {
+    fontSize: 18,
+    marginTop: 10,
+  },
+  bio: {
+    fontSize: 16,
+    marginTop: 10,
+    textAlign: 'center',
+  },
+});
+
+export default ProfileScreen;

@@ -1,32 +1,63 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
+import { ImageBackground, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function App({ navigation }) {
+const Stack = createStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={AppScreen} />
+        <Stack.Screen name="Profile" component={OtherScreen} />
+        <Stack.Screen name="Discs" component={AppScreen} />
+        <Stack.Screen name="Events" component={OtherScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+function AppScreen() {
+  const navigation = useNavigation();
+
   return (
     <ImageBackground
-      source={require('./img/startpage.jpg')} // Provide the correct path to your image
+      source={require('./img/startpage.jpg')}
       style={styles.background}
     >
       <View style={styles.container}>
         <Text style={styles.text}>IThrow</Text>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} 
-          onPress={() => navigation.navigate('profile.js')}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate('Profile')}
+          >
             <Text style={styles.buttonText}>Profile</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button}
+            onPress={() => navigation.navigate('Discs')}
+            >
             <Text style={styles.buttonText}>Discs</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button}
+            onPress={() => navigation.navigate('Events')}
+          >
             <Text style={styles.buttonText}>Events</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button}
+            onPress={() => navigation.navigate('StartAround')}
+          >
             <Text style={styles.buttonText}>Start A Round!</Text>
           </TouchableOpacity>
         </View>
       </View>
     </ImageBackground>
   );
+}
+
+function OtherScreen() {
+  // Define content for the "Other" screen here
 }
 
 const styles = StyleSheet.create({
@@ -59,3 +90,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+
+export default App;
