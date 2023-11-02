@@ -2,6 +2,7 @@ import React from 'react';
 import { ImageBackground, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import ProfileScreen from './profilescreen'; // Import the ProfileScreen component
 
 const Stack = createStackNavigator();
 
@@ -10,14 +11,13 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={AppScreen} />
-        <Stack.Screen name="Profile" component={OtherScreen} />
-        <Stack.Screen name="Discs" component={AppScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} /> 
+        <Stack.Screen name="Discs" component={OtherScreen} />
         <Stack.Screen name="Events" component={OtherScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
 function AppScreen() {
   const navigation = useNavigation();
 
@@ -46,7 +46,7 @@ function AppScreen() {
             <Text style={styles.buttonText}>Events</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button}
-            onPress={() => navigation.navigate('StartAround')}
+            onPress={() => navigation.navigate('StartARound')}
           >
             <Text style={styles.buttonText}>Start A Round!</Text>
           </TouchableOpacity>
@@ -54,7 +54,7 @@ function AppScreen() {
       </View>
     </ImageBackground>
   );
-}
+  }
 
 function OtherScreen() {
   // Define content for the "Other" screen here
