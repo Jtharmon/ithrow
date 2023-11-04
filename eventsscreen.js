@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const Events = () => {
+const EventsScreen = () => {
   return (
     <View>
       <Text>Events Screen</Text>
@@ -10,4 +10,4 @@ const Events = () => {
   );
 };
 
-export default Events;
+export default EventsScreen;

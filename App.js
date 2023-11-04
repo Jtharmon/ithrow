@@ -3,6 +3,9 @@ import { ImageBackground, StyleSheet, Text, View, TouchableOpacity } from 'react
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import ProfileScreen from './profilescreen'; // Import the ProfileScreen component
+import DiscsScreen from './discsscreen';
+import EventsScreen from './eventsscreen';
+import StartARoundScreen from './start-a-roundscreen';
 
 const Stack = createStackNavigator();
 
@@ -12,8 +15,9 @@ function App() {
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={AppScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} /> 
-        <Stack.Screen name="Discs" component={OtherScreen} />
-        <Stack.Screen name="Events" component={OtherScreen} />
+        <Stack.Screen name="Discs" component={DiscsScreen} />
+        <Stack.Screen name="Events" component={EventsScreen} />
+        <Stack.Screen name="StartARound" component={StartARoundScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
