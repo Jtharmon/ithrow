@@ -1,7 +1,21 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import EditProfileScreen from './editprofilescreen'; // Adjust the path as needed
 
 function ProfileScreen() {
+  const navigation = useNavigation();
+
+  const handleEditProfile = () => {
+    navigation.navigate('editprofilescreen');
+  };
+
+  const handleLogout = () => {
+    // Implement your logout logic or navigation here
+    // For now, let's just navigate to the home screen
+    navigation.navigate('Home');
+  };
+
   return (
     <View style={styles.container}>
       {/* Profile Picture Section */}
@@ -12,11 +26,13 @@ function ProfileScreen() {
         />
       </View>
 
+      {/* Name and Username Section */}
       <View style={styles.nameContainer}>
         <Text style={styles.nameText}>Harvey Spector</Text>
         <Text style={styles.usernameText}>@BestCloser</Text>
       </View>
 
+      {/* Round, Holes, and Throws Statistics */}
       <View style={styles.statsContainer}>
         <View style={styles.statsItem}>
           <Text style={styles.statsTextBold}>Rounds Played:</Text>
@@ -28,46 +44,45 @@ function ProfileScreen() {
         </View>
       </View>
 
+      {/* Best Round Section */}
       <View style={styles.bestRoundContainer}>
         <Text style={styles.bestRoundTitle}>Best Round</Text>
         <Text style={styles.bestRoundInfo}>Course Name: Northview Church</Text>
         <Text style={styles.bestRoundInfo}>Round Score: -12</Text>
       </View>
 
+      {/* Favorite Course Section */}
       <View style={styles.bestRoundContainer}>
         <Text style={styles.bestRoundTitle}>Favorite Course</Text>
         <Text style={styles.bestRoundInfo}>Course Name: Northview Church</Text>
       </View>
 
-
-      <TouchableOpacity style={styles.ListItems}>
+      {/* Edit Profile Button */}
+      <TouchableOpacity style={styles.ListItems} onPress={EditProfileScreen}>
         <View style={styles.listItemInnerContentView}>
           <Text style={styles.TextStyles}>Edit Profile</Text>
         </View>
       </TouchableOpacity>
 
-      {/* Additional TouchableOpacity for the Logout button */
-      <TouchableOpacity style={styles.LogoutButton}>
+      {/* Logout Button */}
+      <TouchableOpacity style={styles.LogoutButton} onPress={handleLogout}>
         <View style={styles.LogoutButtonInner}>
           <Text style={styles.TextStyles}>Logout</Text>
         </View>
       </TouchableOpacity>
-      }
     </View>
   );
 }
 
+
 const styles = StyleSheet.create({
-  // Entire background
   container: {
     flex: 1,
     backgroundColor: '#7f7f7f',
     padding: 10,
-    justifyContent: 'space-between',
   },
-  // Profile picture
   profilePictureContainer: {
-    alignItems: 'center', // Center the profile picture
+    alignItems: 'center',
     marginTop: 20,
   },
   profilePicture: {
@@ -75,7 +90,6 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 50,
   },
-  // Name and Username
   nameContainer: {
     alignItems: 'center',
     marginTop: 20,
@@ -89,15 +103,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#000000',
   },
-  // Round, Holes, and Throws Statistics
   statsContainer: {
-    flexDirection: 'row', // Display horizontally
-    justifyContent: 'space-between', // Space items evenly
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
     marginTop: 10,
   },
   statsItem: {
-    flex: 1, // Equal width for all stats items
+    flex: 1,
     flexDirection: 'row',
   },
   statsTextBold: {
@@ -109,7 +122,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#000000',
   },
-  // Best Round Section
   bestRoundContainer: {
     marginTop: 10,
   },
@@ -122,7 +134,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#000000',
   },
-  // Edit Profile Button
   ListItems: {
     backgroundColor: '#c4c4c4',
     width: '100%',
@@ -141,7 +152,6 @@ const styles = StyleSheet.create({
     color: '#000000',
     fontWeight: '400',
   },
-  // Logout Button
   LogoutButton: {
     backgroundColor: '#bc544b',
     width: '100%',
