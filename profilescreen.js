@@ -1,19 +1,41 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  Modal,
+  TextInput,
+  Button,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import EditProfileScreen from './editprofilescreen'; // Adjust the path as needed
 
 function ProfileScreen() {
   const navigation = useNavigation();
+  const [isModalVisible, setModalVisible] = useState(false);
 
   const handleEditProfile = () => {
-    navigation.navigate('editprofilescreen');
+    setModalVisible(true);
   };
 
   const handleLogout = () => {
     // Implement your logout logic or navigation here
     // For now, let's just navigate to the home screen
     navigation.navigate('Home');
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
+  const saveChanges = () => {
+    setProfile({
+      profileData,
+      name:"",
+      username:"",
+      })    
+    setModalVisible(false);
   };
 
   return (
@@ -58,7 +80,7 @@ function ProfileScreen() {
       </View>
 
       {/* Edit Profile Button */}
-      <TouchableOpacity style={styles.ListItems} onPress={EditProfileScreen}>
+      <TouchableOpacity style={styles.ListItems} onPress={handleEditProfile}>
         <View style={styles.listItemInnerContentView}>
           <Text style={styles.TextStyles}>Edit Profile</Text>
         </View>
@@ -70,10 +92,28 @@ function ProfileScreen() {
           <Text style={styles.TextStyles}>Logout</Text>
         </View>
       </TouchableOpacity>
+
+      {/* Modal Form */}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isModalVisible}
+        onRequestClose={closeModal}>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text>Edit Profile</Text>
+            {/* Add your form fields here (e.g., TextInput) */}
+            <TextInput placeholder="New Name" />
+            <TextInput placeholder="New Username" />
+            <TextInput placeholder="Favorite Course" />
+            <Button title="Save Changes" onPress={saveChanges} />
+            <Button title="Close" onPress={closeModal} />
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -164,6 +204,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalContent: {
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 10,
   },
 });
 
