@@ -10,13 +10,14 @@ import {
   Button,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import editprofilescreen from './editprofilescreen';
 
 function ProfileScreen() {
   const navigation = useNavigation();
   const [isModalVisible, setModalVisible] = useState(false);
 
-  const handleEditProfile = () => {
-    setModalVisible(true);
+  const editprofilescreen = () => {
+    navigation.navigate('editprofilescreen');
   };
 
   const handleLogout = () => {
@@ -80,7 +81,7 @@ function ProfileScreen() {
       </View>
 
       {/* Edit Profile Button */}
-      <TouchableOpacity style={styles.ListItems} onPress={handleEditProfile}>
+      <TouchableOpacity style={styles.ListItems} onPress={editprofilescreen}>
         <View style={styles.listItemInnerContentView}>
           <Text style={styles.TextStyles}>Edit Profile</Text>
         </View>
