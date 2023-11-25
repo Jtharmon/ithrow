@@ -6,7 +6,9 @@ import ProfileScreen from './profilescreen'; // Import the ProfileScreen compone
 import DiscsScreen from './discsscreen';
 import EventsScreen from './eventsscreen';
 import StartARoundScreen from './start-a-roundscreen';
+import EditProfileScreen from './editprofilescreen';
 
+const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
 function App() {
@@ -14,12 +16,14 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={AppScreen} />
-        <Stack.Screen name="Profile" component={ProfileScreen} /> 
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="editprofilescreen" component={EditProfileScreen} />
         <Stack.Screen name="Discs" component={DiscsScreen} />
         <Stack.Screen name="Events" component={EventsScreen} />
         <Stack.Screen name="StartARound" component={StartARoundScreen} />
       </Stack.Navigator>
     </NavigationContainer>
+    
   );
 }
 function AppScreen() {

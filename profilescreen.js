@@ -10,7 +10,32 @@ import {
   Button,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import editprofilescreen from './editprofilescreen';
+import EditProfileScreen from './editprofilescreen';
+
+function Root() {
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="Settings" component={Settings} />
+    </Drawer.Navigator>
+  );
+}
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Profile"
+          component={EditProfileScreen}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen name="Profile" component={Feed} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
 
 function ProfileScreen() {
   const navigation = useNavigation();
@@ -211,11 +236,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  },
-  modalContent: {
-    backgroundColor: '#fff',
-    padding: 20,
-    borderRadius: 10,
   },
 });
 
