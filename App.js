@@ -8,24 +8,8 @@ import EventsScreen from './eventsscreen';
 import StartARoundScreen from './start-a-roundscreen';
 import EditProfileScreen from './editprofilescreen';
 
-const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
-function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={AppScreen} />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
-        <Stack.Screen name="editprofilescreen" component={EditProfileScreen} />
-        <Stack.Screen name="Discs" component={DiscsScreen} />
-        <Stack.Screen name="Events" component={EventsScreen} />
-        <Stack.Screen name="StartARound" component={StartARoundScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-    
-  );
-}
 function AppScreen() {
   const navigation = useNavigation();
 
@@ -62,10 +46,21 @@ function AppScreen() {
       </View>
     </ImageBackground>
   );
-  }
+}
 
-function OtherScreen() {
-  // Define content for the "Other" screen here
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={AppScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="editprofilescreen" component={EditProfileScreen} />
+        <Stack.Screen name="Discs" component={DiscsScreen} />
+        <Stack.Screen name="Events" component={EventsScreen} />
+        <Stack.Screen name="StartARound" component={StartARoundScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
 
 const styles = StyleSheet.create({

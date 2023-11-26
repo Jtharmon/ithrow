@@ -1,23 +1,32 @@
 import React, { useState } from "react";
+import { View, Text, TextInput } from "react-native";
+
+const InputField = ({ value, handleInput, placeholder }) => {
+  return (
+    <TextInput
+      value={value}
+      onChangeText={handleInput}
+      placeholder={placeholder}
+    />
+  );
+};
 
 const EditProfileScreen = () => {
   const [name, setName] = useState("");
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
+  const handleNameChange = (text) => {
+    setName(text);
   };
 
   return (
-    <div>
-      <h1>Edit Profile Screen</h1>
+    <View>
+      <Text>Edit Profile Screen</Text>
       <InputField
-        type="text"
-        name="name"
         value={name}
         handleInput={handleNameChange}
         placeholder="Enter your name"
       />
-    </div>
+    </View>
   );
 };
 
